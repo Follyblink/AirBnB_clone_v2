@@ -1,4 +1,5 @@
 Description 🖥️
+
 HolbertonBnB is a complete web application, integrating database storage, a back-end API, and front-end interfacing in a clone of AirBnB. The project currently only implements the back-end console. Each tasks are linked and will help you to:
 
 put in place a parent class (called BaseModel) to take care of the initialization, serialization and deserialization of your future instances
@@ -94,5 +95,6 @@ This console also works in non-interactive mode:
          (hbnb) 
          (hbnb) quit $
 Authors 📝
+
 Ridwan Gbadamosi
 Folake Christianah
