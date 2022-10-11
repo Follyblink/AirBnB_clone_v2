@@ -97,4 +97,5 @@ This console also works in non-interactive mode:
 Authors 📝
 
 Ridwan Gbadamosi
+
 Folake Christianah
