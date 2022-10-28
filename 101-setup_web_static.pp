@@ -1,22 +1,21 @@
-# Configures a web server for deployment of web_static.
-
+# Configures web server to deploy static web 
 # Nginx configuration file
 $nginx_conf = "server {
     listen 80 default_server;
     listen [::]:80 default_server;
     add_header X-Served-By ${hostname};
-    root   /etc/nginx/html;
+    root   /var/www/html;
     index  index.html index.htm;
     location /hbnb_static {
         alias /data/web_static/current;
         index index.html index.htm;
     }
     location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlw\u4? permanent;
     }
     error_page 404 /404.html;
     location /404 {
-      root /etc/nginx/html;
+      root /var/www/html;
       internal;
     }
 }"
@@ -48,7 +47,7 @@ file { '/data/web_static/shared':
 
 file { '/data/web_static/releases/test/index.html':
   ensure  => 'present',
-  content => "Holberton School Puppet\n"
+  content => "Welcome to ALX Internship Program\n"
 } ->
 
 file { '/data/web_static/current':
@@ -60,20 +59,20 @@ exec { 'chown -R ubuntu:ubuntu /data/':
   path => '/usr/bin/:/usr/local/bin/:/bin/'
 }
 
-file { '/etc/nginx':
+file { '/var/www':
   ensure => 'directory'
 } ->
 
-file { '/etc/nginx/html':
+file { '/var/www/html':
   ensure => 'directory'
 } ->
 
-file { '/etc/nginx/html/index.html':
+file { '/var/www/html/index.html':
   ensure  => 'present',
-  content => "Holberton School Nginx\n"
+  content => "Welcome to ALX Internship Program\n"
 } ->
 
-file { '/etc/nginx/html/404.html':
+file { '/var/www/html/404.html':
   ensure  => 'present',
   content => "Ceci n'est pas une page\n"
 } ->
